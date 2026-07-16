@@ -1,0 +1,55 @@
+:root {
+  --publication-accent-color: #191919;
+}
+
+/* Keep the Default UI structure while removing presentation-only chrome. */
+.navbar {
+  background: var(--publication-accent-color);
+}
+
+.navbar-menu,
+.footer {
+  display: none;
+}
+
+/* Keep line lengths comfortable for reading. */
+.doc {
+  max-width: 52rem;
+}
+
+.doc .paragraph,
+.doc .ulist,
+.doc .olist {
+  line-height: 1.65;
+}
+
+.doc img {
+  height: auto;
+}
+
+.nav-menu .is-current-page > .nav-link {
+  background: #e3e3e3;
+  background: color-mix(
+    in srgb,
+    var(--publication-accent-color) 12%,
+    white
+  );
+  border-left: 0.2rem solid var(--publication-accent-color);
+  border-radius: 0.25rem;
+  color: var(--publication-accent-color);
+  display: block;
+  font-weight: 600;
+  margin-left: -0.55rem;
+  padding: 0.3rem 0.5rem 0.3rem 0.4rem;
+  text-decoration: none;
+  transition: background-color 120ms ease;
+}
+
+.nav-menu .is-current-page > .nav-link:hover {
+  background: #d8d8d8;
+  background: color-mix(
+    in srgb,
+    var(--publication-accent-color) 16%,
+    white
+  );
+}

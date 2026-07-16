@@ -1,0 +1,22 @@
+site:
+  title: Publicação
+  start_page: publication::index.adoc
+
+content:
+  sources:
+    - url: .
+      branches: HEAD
+
+asciidoc:
+  attributes:
+    page-pagination: ''
+
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files: ./antora/supplemental-ui
+
+output:
+  clean: true
+  dir: ./build/site

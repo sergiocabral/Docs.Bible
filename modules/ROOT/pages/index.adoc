@@ -1,0 +1,24 @@
+= Modelo de publicação
+
+[cols="1h,3"]
+|===
+| Título
+| A definir
+
+| Responsável
+| A definir
+
+| Informações
+a|
+* A definir
+* A definir
+* A definir
+
+| Edições
+a|
+* xref:main:0000-capa.adoc[Principal]
+|===
+
+== Sobre
+
+A definir.

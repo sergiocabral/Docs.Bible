@@ -1,0 +1,17 @@
+{
+  "name": "docs-antora",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Minimal Antora site",
+  "scripts": {
+    "start": "antora antora-playbook.yml && http-server build/site -c-1 -o"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@antora/cli": "3.1.15",
+    "@antora/site-generator": "3.1.15",
+    "http-server": "14.1.1"
+  }
+}

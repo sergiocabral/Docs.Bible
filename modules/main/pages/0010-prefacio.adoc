@@ -1,0 +1,6 @@
+= Prefácio
+:lang: pt-BR
+
+Este é um prefácio de exemplo, criado para demonstrar como estruturar um livro ou publicação.
+
+A estrutura de arquivos é meramente didática e serve para ilustrar a organização de um projeto de documentação. O conteúdo real deve ser substituído por informações relevantes ao tema do livro.

@@ -1,0 +1,6 @@
+name: publication
+title: Publicação
+version: ~
+start_page: ROOT:index.adoc
+nav:
+  - modules/main/nav.adoc
