@@ -1,0 +1,5 @@
+# Generated sites and publication files
+/build/
+
+# Node.js dependencies installed locally
+/node_modules/
