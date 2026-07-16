@@ -1,0 +1,24 @@
+= {publication-title}
+{publication-author}
+:doctype: book
+:lang: {publication-lang}
+:isbn: {publication-isbn}
+:toc:
+:toclevels: 2
+:sectnums:
+:title-page:
+:pdf-page-size: A4
+include::attributes/common.adoc[]
+include::attributes/{language-profile}.adoc[]
+ifdef::backend-pdf[]
+:front-cover-image: image:{cover-complete-image}[]
+endif::[]
+ifdef::backend-epub3[]
+:front-cover-image: image:{cover-complete-image}[]
+endif::[]
+
+ifdef::backend-html5[]
+image::{cover-banner-image}[{publication-title},width=100%,align=center]
+endif::[]
+
+include::../contents.adoc[]

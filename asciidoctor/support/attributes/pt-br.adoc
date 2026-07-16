@@ -1,0 +1,12 @@
+:appendix-caption: Apêndice
+:caution-caption: Cuidado
+:chapter-signifier: Capítulo
+:example-caption: Exemplo
+:figure-caption: Figura
+:important-caption: Importante
+:last-update-label: Última atualização
+:note-caption: Nota
+:table-caption: Tabela
+:tip-caption: Dica
+:toc-title: Sumário
+:warning-caption: Aviso

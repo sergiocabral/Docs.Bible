@@ -1,0 +1,21 @@
+extends: default
+
+title_page:
+  background_image: image:../../../modules/ROOT/assets/images/cover-background.png[fit=cover]
+  text_align: center
+
+  title:
+    top: 24%
+    font_color: 17324D
+    font_size: 30
+    font_style: bold
+
+  subtitle:
+    font_color: 3F6078
+    font_size: 17
+    font_style: normal
+
+  authors:
+    margin_top: 20
+    font_color: 48667A
+    font_size: 12

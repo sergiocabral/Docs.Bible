@@ -1,0 +1,8 @@
+author: Quem sou eu?
+isbn: ''
+
+editions:
+  main:
+    title: 'Publicação: Genérica'
+    slug: nome-do-arquivo-gerado
+    lang: pt-BR

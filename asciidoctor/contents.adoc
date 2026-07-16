@@ -1,0 +1,6 @@
+:sectnums!:
+include::../modules/{edition-module}/pages/0010-prefacio.adoc[leveloffset=+1]
+
+:sectnums:
+include::../modules/{edition-module}/pages/0100-capitulo-01-exemplo.adoc[leveloffset=+1]
+include::../modules/{edition-module}/pages/0110-capitulo-02-outro-exemplo.adoc[leveloffset=+1]

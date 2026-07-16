@@ -1,5 +1,8 @@
 # Generated sites and publication files
 /build/
 
+# Temporary EPUB image staging
+/asciidoctor/support/epub-images/
+
 # Node.js dependencies installed locally
 /node_modules/

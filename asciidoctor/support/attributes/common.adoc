@@ -1,0 +1,5 @@
+:imagesdir: ../../modules/ROOT/assets/images
+:cover-complete-image: cover-complete.png
+:cover-banner-image: cover-banner.png
+:pdf-themesdir: asciidoctor/support/themes
+:pdf-theme: publication
