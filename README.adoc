@@ -1,0 +1,159 @@
+= Modelo de publicação
+
+// Para criar outra publicação, atualize esta tabela e siga a seção "Criar uma publicação".
+
+[cols="1,3"]
+|===
+| Título
+| A definir
+
+| Responsável
+| A definir
+
+| Informações
+a|
+* A definir
+* A definir
+* A definir
+
+| Edições
+a|
+* Principal
+|===
+
+== Sobre
+
+A definir.
+
+Este repositório mantém conteúdo em AsciiDoc. Ele funciona como componente Antora e também gera HTML, PDF e EPUB localmente.
+
+== Criar uma publicação
+
+=== 1. Atualize a identidade
+
+Edite a tabela e a seção Sobre acima, `modules/ROOT/pages/index.adoc`, `antora.yml` e `antora-playbook.yml`.
+
+Centralize os metadados das publicações em `asciidoctor/publication.yml`:
+
+[source,yaml]
+----
+author: A definir
+isbn: ''
+
+editions:
+  main:
+    title: Publicação
+    slug: publicacao
+    lang: pt-BR
+----
+
+A chave `main` é o módulo neutro de uma publicação com uma única variedade. Ela pode ser renomeada quando o repositório reunir variações da mesma publicação:
+
+* por idioma: `en-us`, `pt-br`;
+* por edição: `primeira-edicao`, `segunda-edicao`;
+* por ambos, quando necessário: `pt-br-primeira-edicao`.
+
+Use slugs ASCII minúsculos e mantenha uma convenção consistente entre módulos equivalentes. O nome do módulo organiza a variedade; o campo `lang`, como `pt-BR`, é que seleciona `asciidoctor/support/attributes/pt-br.adoc`.
+
+Ao renomear `main`, atualize em conjunto o diretório em `modules/`, a chave em `publication.yml`, o caminho de navegação em `antora.yml` e os `xref` que mencionem o módulo.
+
+=== 2. Substitua o conteúdo
+
+Use esta estrutura para uma única edição:
+
+[source,text]
+----
+modules/
+├── ROOT/
+│   ├── pages/index.adoc
+│   └── assets/images/
+└── main/
+    ├── nav.adoc
+    └── pages/
+----
+
+Nomeie as páginas com quatro dígitos e um slug ASCII. Avance de dez em dez para permitir inserções:
+
+[source,text]
+----
+0010-prefacio.adoc
+0100-capitulo-01-titulo.adoc
+0110-capitulo-02-titulo.adoc
+----
+
+Registre a navegação em `modules/main/nav.adoc` e a ordem das publicações em `asciidoctor/contents.adoc`:
+
+[source,asciidoc]
+----
+\include::../modules/{edition-module}/pages/0100-capitulo-01-titulo.adoc[leveloffset=+1]
+----
+
+Para várias variedades, crie um módulo e uma entrada em `publication.yml` para cada uma. Preserve os mesmos nomes de página quando os conteúdos forem correspondentes.
+
+=== 3. Substitua as capas
+
+Mantenha estes nomes em `modules/ROOT/assets/images/`:
+
+* `cover-complete.png`: capa pronta, usada no PDF e no EPUB;
+* `cover-background.png`: fundo da página de título do PDF;
+* `cover-banner.png`: imagem horizontal exibida no HTML.
+
+=== 4. Preserve a infraestrutura
+
+Não é necessário modificar `Rakefile`, `asciidoctor/support`, `antora/`, `Gemfile`, `package.json` ou os lockfiles ao trocar apenas a publicação.
+
+== Executar localmente
+
+=== Site Antora
+
+Pré-requisitos: Git e Node.js 20 ou posterior.
+
+[source,shell]
+----
+npm ci
+npm start
+----
+
+O site é gerado em `build/site` e aberto no navegador.
+
+=== HTML, PDF e EPUB
+
+Pré-requisitos: Ruby 3.2 ou posterior e Bundler.
+
+[source,shell]
+----
+bundle install
+bundle exec rake
+----
+
+Os arquivos são gerados em `build/publications/<módulo>/`.
+
+=== Validar antes de registrar mudanças
+
+[source,shell]
+----
+npm exec -- antora antora-playbook.yml
+bundle exec rake
+----
+
+Corrija referências ausentes e confirme os três formatos antes do commit.
+
+== Publicar uma versão
+
+O workflow `.github/workflows/release.yml` publica os arquivos de `build/publications` quando recebe uma tag anotada `vX.Y.Z`.
+
+[source,shell]
+----
+git add --all
+git commit -m "docs: revise publication content"
+git push origin main
+
+git tag -a v1.0.0 -m "Primeira publicação" -m "Inclui HTML, PDF e EPUB."
+git push origin v1.0.0
+----
+
+Use uma nova versão para cada atualização publicada; não mova nem reutilize tags existentes.
+
+== Usar em outro site Antora
+
+Adicione este repositório às fontes do playbook agregador. O Antora importa `antora.yml` e `modules/`; a infraestrutura local não se torna conteúdo do site.
