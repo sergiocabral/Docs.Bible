@@ -1,0 +1,17 @@
+= 1 Timóteo
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./054-1-timoteo-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

@@ -1,0 +1,17 @@
+= Oseias
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./028-oseias-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

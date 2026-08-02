@@ -1,0 +1,17 @@
+= 1 Pedro
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./060-1-pedro-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

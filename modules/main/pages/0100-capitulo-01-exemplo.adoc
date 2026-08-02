@@ -1,4 +1,0 @@
-= Exemplo
-:lang: pt-BR
-
-Substitua o conteúdo destes arquivos pelo conteúdo da publicação. Estes arquivos são apenas exemplos de como organizar o conteúdo da publicação.

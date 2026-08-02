@@ -1,0 +1,17 @@
+= Jeremias
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./024-jeremias-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

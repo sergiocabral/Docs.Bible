@@ -1,0 +1,17 @@
+= Tito
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./056-tito-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

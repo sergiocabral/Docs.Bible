@@ -1,0 +1,17 @@
+= Miqueias
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./033-miqueias-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

@@ -1,0 +1,17 @@
+= Josué
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./006-josue-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

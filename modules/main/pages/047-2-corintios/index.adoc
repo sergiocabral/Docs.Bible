@@ -1,0 +1,17 @@
+= 2 Coríntios
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./047-2-corintios-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

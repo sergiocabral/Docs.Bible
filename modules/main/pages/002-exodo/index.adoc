@@ -1,0 +1,17 @@
+= Êxodo
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./002-exodo-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

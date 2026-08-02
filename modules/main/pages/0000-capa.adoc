@@ -1,6 +1,0 @@
-= Publicação: Genérica
-:lang: pt-BR
-
-Quem sou eu?
-
-image::ROOT:cover-complete.png[Capa,width=420,align=center]

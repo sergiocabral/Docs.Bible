@@ -1,0 +1,17 @@
+= Deuteronômio
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./005-deuteronomio-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

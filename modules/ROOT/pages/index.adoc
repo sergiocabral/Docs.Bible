@@ -1,4 +1,4 @@
-= Modelo de publicação
+= Bíblia modelo
 
 [cols="1h,3"]
 |===
@@ -16,7 +16,7 @@ a|
 
 | Edições
 a|
-* xref:main:0000-capa.adoc[Principal]
+* xref:main:001-genesis/001-genesis-001.adoc[Principal]
 |===
 
 == Sobre

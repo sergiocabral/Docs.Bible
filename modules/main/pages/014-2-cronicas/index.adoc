@@ -1,0 +1,17 @@
+= 2 Crônicas
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./014-2-cronicas-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

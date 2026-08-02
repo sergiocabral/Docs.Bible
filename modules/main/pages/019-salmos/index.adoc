@@ -1,0 +1,17 @@
+= Salmos
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./019-salmos-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

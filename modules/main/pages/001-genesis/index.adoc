@@ -1,0 +1,17 @@
+= Gênesis
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./001-genesis-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

@@ -1,0 +1,17 @@
+= Esdras
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./015-esdras-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

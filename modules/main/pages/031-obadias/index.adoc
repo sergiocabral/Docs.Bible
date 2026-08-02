@@ -1,0 +1,17 @@
+= Obadias
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./031-obadias-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

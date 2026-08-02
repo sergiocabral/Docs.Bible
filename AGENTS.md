@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Este é um modelo de publicação em AsciiDoc com três usos:
+Este é um modelo de publicação bíblica em AsciiDoc com três usos:
 
 - componente importável por outro site Antora;
 - site Antora executável localmente;
@@ -26,29 +26,20 @@ Priorize conteúdo, caminhos previsíveis e pouca infraestrutura. Leia `README.a
 
 Não coloque identidade editorial no `Rakefile`, em `package.json` ou em `asciidoctor/support`.
 
-## Criar outra publicação
+## Criar outra Bíblia
 
 Ao substituir o conteúdo deste modelo:
 
 1. Atualize a tabela e a seção Sobre do `README.adoc` e de `modules/ROOT/pages/index.adoc`.
-2. Substitua `modules/main/pages/` e reconstrua `modules/main/nav.adoc`; renomeie o módulo se a publicação exigir uma identificação mais específica.
-3. Atualize `antora.yml`, `antora-playbook.yml` e `asciidoctor/publication.yml`.
-4. Reconstrua `asciidoctor/contents.adoc` na ordem editorial correta.
-5. Substitua as capas em `modules/ROOT/assets/images/`.
-6. Remova todas as referências, imagens, títulos e slugs da publicação anterior.
-7. Execute Antora e Asciidoctor antes de considerar o trabalho concluído.
+2. Escolha uma edição de referência e substitua `modules/main/pages/`; crie outros módulos quando houver edições ou idiomas adicionais.
+3. Atualize `nav.adoc`, `antora.yml`, `antora-playbook.yml` e `asciidoctor/publication.yml`.
+4. Reconstrua `asciidoctor/contents.adoc` na ordem canônica.
+5. Ajuste a quantidade e a ordem dos livros quando o cânon for diferente.
+6. Substitua as capas em `modules/ROOT/assets/images/`.
+7. Remova todas as referências, imagens, títulos e slugs da publicação anterior.
+8. Execute Antora e Asciidoctor antes de considerar o trabalho concluído.
 
-`main` é somente o módulo neutro inicial. Quando houver variedades da publicação, use nomes que expressem a dimensão organizada:
-
-- idiomas: `en-us`, `pt-br`;
-- edições: `primeira-edicao`, `segunda-edicao`;
-- combinação necessária: `pt-br-primeira-edicao`.
-
-Use slugs ASCII minúsculos e uma convenção consistente. Para cada módulo, a chave em `publication.yml` deve ser idêntica ao diretório em `modules/`. O valor `lang`, como `pt-BR`, seleciona o perfil `pt-br.adoc`; o nome do módulo não substitui esse campo.
-
-Ao renomear um módulo, atualize o diretório, `antora.yml`, `publication.yml`, o `nav.adoc` e todos os `xref` que mencionem o nome anterior. Preserve os mesmos nomes de página quando os conteúdos forem correspondentes.
-
-Edite arquivos de infraestrutura somente quando a solicitação tratar da forma de executar ou publicar o projeto.
+`main` é o módulo neutro inicial. Para cada módulo, mantenha idênticos o diretório em `modules/` e a chave em `publication.yml`. O campo `lang`, como `pt-BR`, seleciona o perfil de idioma; preserve os mesmos caminhos nas edições correspondentes.
 
 ## Conteúdo e nomenclatura
 
@@ -58,39 +49,31 @@ inteligência artificial, leia integralmente
 as coordenadas de origem, o chunking, os resumos e a geração determinística
 compartilhada com as demais famílias `Docs.*`.
 
-Use:
+Use esta estrutura:
 
 ```text
-NNNN-slug-descritivo.adoc
+modules/<módulo>/pages/NNN-slug-do-livro/index.adoc
+modules/<módulo>/pages/NNN-slug-do-livro/NNN-slug-do-livro-NNN.adoc
 ```
 
 Regras:
 
-- quatro dígitos, preferencialmente em intervalos de dez;
+- três dígitos para ordenar livros e capítulos;
 - slug ASCII minúsculo com números e hífens;
-- sem espaços, acentos, sublinhados ou pontuação;
-- ordenação pelo nome igual à ordem natural da publicação;
-- mesmos caminhos para páginas correspondentes entre edições.
+- um `index.adoc` por edição e por livro;
+- um arquivo autônomo por capítulo, iniciado por `= `;
+- mesmos caminhos para conteúdos correspondentes entre edições;
+- cânon e ordem derivados da publicação, sem fixá-los em 66 livros.
 
-Exemplo:
+Preserve âncoras de livro, capítulo e versículo. Não coloque navegação anterior/topo/próximo dentro dos capítulos; navegação é estrutura, não texto bíblico. Sempre atualize `nav.adoc` e `asciidoctor/contents.adoc` ao adicionar, remover, renomear ou reordenar páginas.
 
-```text
-0010-prefacio.adoc
-0100-capitulo-01-titulo.adoc
-0110-capitulo-02-titulo.adoc
-```
+## Navegação Antora
 
-No título AsciiDoc de um capítulo, escreva somente o título. Deixe número e rótulo explícitos no `nav.adoc`:
+O `nav.adoc` de cada edição deve listar a edição e seus livros, mas não todos os capítulos. A página de cada livro fornece uma tabela compacta de capítulos.
 
-```adoc
-= Um capítulo de exemplo
-```
-
-```adoc
-* xref:0100-capitulo-01-exemplo.adoc[Capítulo 1 - Um capítulo de exemplo]
-```
-
-Sempre atualize `nav.adoc` e `asciidoctor/contents.adoc` ao adicionar, remover, renomear ou reordenar páginas.
+- Condicione tabelas exclusivamente navegacionais com `ifdef::env-site[]`.
+- Preserve `page-bible-navigation`, `bible-navigation.cjs` e `bible-sidebar.js`; eles geram os seletores sem reescrever o conteúdo e mantêm o livro aberto no menu.
+- Em outro site Antora, registre uma extensão compatível; o playbook agregador não importa automaticamente a extensão local.
 
 ## Recursos e capas
 
@@ -107,6 +90,7 @@ Não inclua páginas artificiais de capa ou sumário em `contents.adoc`; os conv
 ## Infraestrutura
 
 - Preserve `:doctype: book`; é o tipo técnico do Asciidoctor.
+- Mantenha `toclevels` em `1` e a numeração automática desabilitada para limitar o sumário aos livros.
 - Mantenha `asciidoctor/support` reutilizável entre repositórios.
 - Mantenha `package.json` genérico; versões editoriais são tags Git.
 - Não versione `build/` nem `node_modules/`.
@@ -126,10 +110,10 @@ bundle exec rake
 Confirme:
 
 - ausência de referências ou inclusões quebradas;
+- quantidade e ordem esperadas de livros e capítulos;
+- mesmos caminhos nas edições correspondentes;
+- sumário limitado aos livros;
 - HTML, PDF e EPUB para todas as edições;
-- ordem definida em `contents.adoc`;
-- rótulos no idioma selecionado;
-- três capas aplicadas aos destinos esperados;
 - somente mudanças intencionais no `git status`.
 
 ## Releases

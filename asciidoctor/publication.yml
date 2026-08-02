@@ -1,8 +1,8 @@
-author: Quem sou eu?
+author: Editora
 isbn: ''
 
 editions:
   main:
-    title: 'Publicação: Genérica'
-    slug: nome-do-arquivo-gerado
+    title: 'Bíblia: Modelo'
+    slug: biblia
     lang: pt-BR

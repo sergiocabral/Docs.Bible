@@ -1,6 +1,6 @@
-= Modelo de publicação
+= Bíblia modelo
 
-// Para criar outra publicação, atualize esta tabela e siga a seção "Criar uma publicação".
+// Para usar este repositório como modelo de outra Bíblia, atualize esta tabela e siga a seção "Criar uma Bíblia".
 
 [cols="1,3"]
 |===
@@ -27,13 +27,13 @@ A definir.
 
 Este repositório mantém conteúdo em AsciiDoc. Ele funciona como componente Antora e também gera HTML, PDF e EPUB localmente.
 
-== Criar uma publicação
+== Criar uma Bíblia
 
 === 1. Atualize a identidade
 
 Edite a tabela e a seção Sobre acima, `modules/ROOT/pages/index.adoc`, `antora.yml` e `antora-playbook.yml`.
 
-Centralize os metadados das publicações em `asciidoctor/publication.yml`:
+Centralize os metadados das edições em `asciidoctor/publication.yml`:
 
 [source,yaml]
 ----
@@ -42,53 +42,36 @@ isbn: ''
 
 editions:
   main:
-    title: Publicação
-    slug: publicacao
+    title: Bíblia
+    slug: biblia
     lang: pt-BR
 ----
 
-A chave `main` é o módulo neutro de uma publicação com uma única variedade. Ela pode ser renomeada quando o repositório reunir variações da mesma publicação:
-
-* por idioma: `en-us`, `pt-br`;
-* por edição: `primeira-edicao`, `segunda-edicao`;
-* por ambos, quando necessário: `pt-br-primeira-edicao`.
-
-Use slugs ASCII minúsculos e mantenha uma convenção consistente entre módulos equivalentes. O nome do módulo organiza a variedade; o campo `lang`, como `pt-BR`, é que seleciona `asciidoctor/support/attributes/pt-br.adoc`.
-
-Ao renomear `main`, atualize em conjunto o diretório em `modules/`, a chave em `publication.yml`, o caminho de navegação em `antora.yml` e os `xref` que mencionem o módulo.
+`main` é o módulo neutro inicial. Para outras edições ou idiomas, crie um módulo com slug ASCII e uma entrada correspondente em `publication.yml`. Ao renomeá-lo, atualize também `antora.yml` e os `xref`. O campo `lang` seleciona o perfil em `asciidoctor/support/attributes/`.
 
 === 2. Substitua o conteúdo
 
-Use esta estrutura para uma única edição:
+Cada livro possui um diretório ordenado, um `index.adoc` e um arquivo por capítulo:
 
 [source,text]
 ----
-modules/
-├── ROOT/
-│   ├── pages/index.adoc
-│   └── assets/images/
-└── main/
-    ├── nav.adoc
-    └── pages/
+modules/main/pages/001-genesis/index.adoc
+modules/main/pages/001-genesis/001-genesis-001.adoc
 ----
 
-Nomeie as páginas com quatro dígitos e um slug ASCII. Avance de dez em dez para permitir inserções:
+Use três dígitos, slugs ASCII e os mesmos caminhos nas edições correspondentes. O `nav.adoc` lista a edição e os livros, não todos os capítulos; cada índice de livro contém sua tabela de capítulos.
 
-[source,text]
-----
-0010-prefacio.adoc
-0100-capitulo-01-titulo.adoc
-0110-capitulo-02-titulo.adoc
-----
+O modelo traz os 66 livros do cânon protestante, somente com o capítulo 1 e conteúdo genérico. Ajuste livros e ordem quando o cânon da publicação for diferente.
 
-Registre a navegação em `modules/main/nav.adoc` e a ordem das publicações em `asciidoctor/contents.adoc`:
+Registre a ordem linear em `asciidoctor/contents.adoc`:
 
 [source,asciidoc]
 ----
-\include::../modules/{edition-module}/pages/0100-capitulo-01-titulo.adoc[leveloffset=+1]
+\include::../modules/{edition-module}/pages/001-genesis/index.adoc[leveloffset=+1]
+\include::../modules/{edition-module}/pages/001-genesis/001-genesis-001.adoc[leveloffset=+2]
 ----
 
-Para várias variedades, crie um módulo e uma entrada em `publication.yml` para cada uma. Preserve os mesmos nomes de página quando os conteúdos forem correspondentes.
+A extensão `antora/extensions/bible-navigation.cjs` gera os seletores superiores durante o build sem modificar os arquivos de conteúdo. Preserve também `bible-sidebar.js`, que mantém o livro correspondente aberto no menu lateral.
 
 === 3. Substitua as capas
 
@@ -157,3 +140,5 @@ Use uma nova versão para cada atualização publicada; não mova nem reutilize 
 == Usar em outro site Antora
 
 Adicione este repositório às fontes do playbook agregador. O Antora importa `antora.yml` e `modules/`; a infraestrutura local não se torna conteúdo do site.
+
+Para manter os seletores bíblicos, o agregador também precisa registrar uma extensão compatível com `page-bible-navigation`.

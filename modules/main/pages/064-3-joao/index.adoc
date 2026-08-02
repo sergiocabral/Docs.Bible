@@ -1,0 +1,17 @@
+= 3 João
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./064-3-joao-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

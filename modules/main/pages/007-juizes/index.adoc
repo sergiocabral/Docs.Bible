@@ -1,0 +1,17 @@
+= Juízes
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./007-juizes-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

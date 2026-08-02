@@ -1,0 +1,17 @@
+= Lucas
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./042-lucas-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

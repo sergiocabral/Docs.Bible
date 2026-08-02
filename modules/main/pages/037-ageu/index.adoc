@@ -1,0 +1,17 @@
+= Ageu
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./037-ageu-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

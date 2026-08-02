@@ -1,0 +1,17 @@
+= 2 Reis
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./012-2-reis-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

@@ -1,0 +1,17 @@
+= Daniel
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./027-daniel-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

@@ -1,0 +1,17 @@
+= Cântico dos Cânticos
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./022-cantico-dos-canticos-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

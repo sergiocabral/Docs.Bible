@@ -1,6 +1,10 @@
 site:
-  title: Publicação
-  start_page: publication::index.adoc
+  title: Bíblia modelo
+  start_page: bible::index.adoc
+
+antora:
+  extensions:
+    - require: ./antora/extensions/bible-navigation.cjs
 
 content:
   sources:

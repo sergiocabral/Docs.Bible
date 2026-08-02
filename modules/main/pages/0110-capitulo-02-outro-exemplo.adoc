@@ -1,4 +1,0 @@
-= Outro exemplo
-:lang: pt-BR
-
-Este é mais um arquivo de exemplo para demonstrar como a estrutura de uma publicação pode ser organizada. Ele não contém conteúdo real, apenas serve como modelo para a criação de novos arquivos de conteúdo.

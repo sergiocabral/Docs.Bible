@@ -1,0 +1,17 @@
+= Rute
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./008-rute-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

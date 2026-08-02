@@ -1,0 +1,17 @@
+= Gálatas
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./048-galatas-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

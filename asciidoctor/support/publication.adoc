@@ -4,8 +4,8 @@
 :lang: {publication-lang}
 :isbn: {publication-isbn}
 :toc:
-:toclevels: 2
-:sectnums:
+:toclevels: 1
+:sectnums!:
 :title-page:
 :pdf-page-size: A4
 include::attributes/common.adoc[]

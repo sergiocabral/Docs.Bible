@@ -1,0 +1,17 @@
+= Efésios
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./049-efesios-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

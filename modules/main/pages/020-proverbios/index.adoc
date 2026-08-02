@@ -1,0 +1,17 @@
+= Provérbios
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./020-proverbios-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

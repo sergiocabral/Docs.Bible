@@ -1,0 +1,17 @@
+= Sofonias
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./036-sofonias-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

@@ -1,0 +1,17 @@
+= Joel
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./029-joel-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

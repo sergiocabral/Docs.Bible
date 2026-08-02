@@ -1,0 +1,17 @@
+= Eclesiastes
+
+ifdef::env-site[]
+
+[cols="8*^"]
+|===
+| xref:./021-eclesiastes-001.adoc[1]
+|
+|
+|
+|
+|
+|
+|
+|===
+
+endif::env-site[]

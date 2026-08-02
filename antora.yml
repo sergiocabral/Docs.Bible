@@ -1,6 +1,9 @@
-name: publication
-title: Publicação
+name: bible
+title: Bíblia
 version: ~
 start_page: ROOT:index.adoc
 nav:
   - modules/main/nav.adoc
+asciidoc:
+  attributes:
+    page-bible-navigation: ''

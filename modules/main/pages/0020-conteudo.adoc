@@ -1,7 +1,0 @@
-= Conteúdo
-:lang: pt-BR
-
-* xref:0000-capa.adoc[Capa]
-* xref:0010-prefacio.adoc[Prefácio]
-* xref:0100-capitulo-01-exemplo.adoc[Capítulo 1 - Exemplo]
-* xref:0110-capitulo-02-outro-exemplo.adoc[Capítulo 2 - Outro exemplo]
