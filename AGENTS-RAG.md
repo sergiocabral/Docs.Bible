@@ -1,7 +1,7 @@
 # Instruções para artefatos RAG
 
 Este arquivo define o contrato de conteúdo estático que os repositórios
-`Docs.Book`, `Docs.Bible`, `Docs.JW` e `Docs.Notes` devem produzir para busca e
+`Docs.Book`, `Docs.Bible`, `Docs.JW`, `Docs.Notes` e `Docs.Standard` devem produzir para busca e
 conversa com inteligência artificial. Neste repositório, aplique o perfil
 `book` descrito abaixo.
 
@@ -43,9 +43,12 @@ Use exatamente um destes valores em `family`:
 - `jw`: publicações com mnemônico, idioma e data de edição, parágrafos
   numerados, referências editoriais e análises derivadas entre edições;
 - `notes`: coleções não necessariamente lineares, com módulos temáticos,
-  versões, índices intermediários e metadados de origem.
+  versões, índices intermediários e metadados de origem;
+- `standard`: normas técnicas com um módulo por documento-fonte (edição,
+  idioma, emenda ou versão comentada), numeração oficial de seções, anexos e
+  tabelas de controles.
 
-O contrato de arquivos é igual para as quatro famílias. Apenas a descoberta da
+O contrato de arquivos é igual para as cinco famílias. Apenas a descoberta da
 ordem, a unidade atômica e as regras de chunking mudam.
 
 ## Estrutura obrigatória
@@ -189,7 +192,7 @@ O manifesto é JSON UTF-8 e contém, nesta ordem lógica:
 
 - `schemaVersion`: número inteiro `1`;
 - `repository`: nome obtido de `remote.origin.url`, sem caminho e sem `.git`;
-- `family`: um dos quatro perfis definidos neste documento;
+- `family`: um dos cinco perfis definidos neste documento;
 - `generator`: objeto com `name` e versão semântica exata do gerador;
 - `normalizationVersion`: versão das regras de extração, inicialmente `1`;
 - `serialization`: valor fixo `jcs-rfc8785`;
@@ -547,6 +550,23 @@ Para `Docs.Notes`:
    essa introdução;
 10. não suponha leitura linear quando o repositório estiver organizado por
     tema, data, livro bíblico ou categoria.
+
+## Perfil `standard`
+
+Para `Docs.Standard`:
+
+1. cada módulo declarado em `publication.yml` forma um corpus `publication`;
+2. use `asciidoctor/contents/<módulo>.adoc` como ordem quando existir;
+3. classifique `index.adoc` como `index`, páginas `00xx` (prefácios e
+   introdução) como `frontmatter`, `02xx` (anexos) e `09xx` (bibliografia)
+   como `appendix` e as demais seções como `chapter`;
+4. divida por seção oficial (`4.1`, `6.1.3`) e preserve a numeração no
+   `headingPath` e em `source.section`;
+5. tabelas de controles produzem chunks de tabela; não separe o identificador
+   do controle do seu texto;
+6. comentários de normas comentadas (`[sidebar.comentario]`) entram como
+   texto do documento, sem se misturar a requisitos de outros módulos;
+7. resumos são somente extrativos; não gere interpretação de requisitos.
 
 ## `summaries.jsonl`
 

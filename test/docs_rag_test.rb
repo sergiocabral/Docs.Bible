@@ -100,6 +100,33 @@ module DocsRagTest
       validator.send(:exact_fields!, { 'id' => 'ok', 'extra' => true }, %w[id].to_set, %w[id].to_set, 'fixture')
     end
 
+    standard_repository = DocsRag::Repository.allocate
+    standard_repository.instance_variable_set(:@repository_name, 'Docs.Standard.ISO27001')
+    assert_equal 'standard', standard_repository.send(:discover_family), 'standard family discovery'
+    assert_equal 'publication', DocsRag::FAMILY_KIND.fetch('standard'), 'standard corpus kind'
+    assert_equal(
+      DocsRag::FAMILY_KIND.keys.sort,
+      DocsRag::Validator::FAMILY_METADATA_FIELDS.keys.sort,
+      'every family has validated metadata fields'
+    )
+    assert_equal(
+      DocsRag::FAMILY_KIND.keys.sort,
+      DocsRag::Validator::FAMILY_SOURCE_FIELDS.keys.sort,
+      'every family has validated source fields'
+    )
+    generator = DocsRag::Generator.allocate
+    assert_equal(
+      %w[index frontmatter frontmatter chapter appendix appendix],
+      %w[index.adoc 0010-prefacio.adoc 0020-introducao.adoc 0104-secao-04-contexto.adoc
+         0201-anexo-a-controles.adoc 0900-bibliografia.adoc].map { |name| generator.send(:standard_document_kind, name) },
+      'standard document kinds'
+    )
+    unknown_repository = DocsRag::Repository.allocate
+    unknown_repository.instance_variable_set(:@repository_name, 'Docs.Unknown.Example')
+    assert_raises(DocsRag::Error, /unsupported Docs\.\* repository family/, 'unknown family rejection') do
+      unknown_repository.send(:discover_family)
+    end
+
     oversized = (1..2_501).map { |index| "palavra#{index}" }.join(' ')
     parts = DocsRag::ChunkBuilder.allocate.send(:split_oversized_text, oversized)
     assert_equal [1_200, 1_200, 101], parts.map { |part| DocsRag::Text.word_count(part) }, 'oversized fallback split'

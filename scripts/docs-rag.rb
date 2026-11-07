@@ -16,14 +16,15 @@ module DocsRag
   SCHEMA_VERSION = 1
   NORMALIZATION_VERSION = 1
   GENERATOR_NAME = 'docs-rag'
-  GENERATOR_VERSION = '1.0.1'
+  GENERATOR_VERSION = '1.1.0'
   SERIALIZATION = 'jcs-rfc8785'
   PORTABLE_KEY = /\A[A-Za-z0-9._-]+\z/
   FAMILY_KIND = {
     'book' => 'publication',
     'bible' => 'translation',
     'jw' => 'publication',
-    'notes' => 'collection'
+    'notes' => 'collection',
+    'standard' => 'publication'
   }.freeze
 
   class Error < StandardError; end
@@ -332,7 +333,7 @@ module DocsRag
     end
 
     def discover_family
-      match = repository_name.match(/\ADocs\.(Book|Bible|JW|Notes)(?:\.|\z)/)
+      match = repository_name.match(/\ADocs\.(Book|Bible|JW|Notes|Standard)(?:\.|\z)/)
       raise Error, "unsupported Docs.* repository family: #{repository_name}" unless match
 
       match[1].downcase
@@ -403,7 +404,7 @@ module DocsRag
     def source_order_for(publication, module_name)
       candidates = []
       candidates << "asciidoctor/#{publication.fetch('contents')}" if publication['contents']
-      candidates << "asciidoctor/contents/#{module_name}.adoc" if family == 'notes'
+      candidates << "asciidoctor/contents/#{module_name}.adoc" if %w[notes standard].include?(family)
       candidates << 'asciidoctor/contents.adoc'
       candidates.find { |path| absolute(path).file? }
     end
@@ -958,7 +959,7 @@ module DocsRag
       source = { 'sourceKey' => source_key }
       section = group.first.heading_path.drop(1).join(' > ')
       case family
-      when 'book'
+      when 'book', 'standard'
         source['section'] = section unless section.empty?
       when 'bible'
         source['book'] = metadata.fetch('book')
@@ -1257,6 +1258,16 @@ module DocsRag
       { document: record, chunks: chunks }
     end
 
+    # Normas: identificação, prefácios e introdução (00xx), seções (01xx),
+    # anexos (02xx) e bibliografia (09xx), conforme o modelo Docs.Standard.
+    def standard_document_kind(basename)
+      return 'index' if basename == 'index.adoc'
+      return 'frontmatter' if basename.start_with?('00')
+      return 'appendix' if basename.start_with?('02', '09')
+
+      'chapter'
+    end
+
     def document_kind(corpus, document, relative)
       explicit = document.attr('page-rag-kind').to_s.strip
       unless explicit.empty?
@@ -1270,6 +1281,7 @@ module DocsRag
       when 'jw' then corpus.kind == 'analysis' ? 'analysis' : 'chapter'
       when 'notes' then File.basename(relative) == 'index.adoc' ? 'index' : 'note'
       when 'book' then corpus.publication == 'articles' || relative.start_with?('articles/') ? 'article' : 'chapter'
+      when 'standard' then standard_document_kind(File.basename(relative))
       else 'page'
       end
     end
@@ -1390,13 +1402,15 @@ module DocsRag
       'book' => Set.new,
       'bible' => %w[book chapter].to_set,
       'jw' => %w[mnemonic languageCode editionDate copyrightYears territory variation sourceCitation wolSourceUrl sourcePages].to_set,
-      'notes' => %w[originId originDate sourceUrl sourceType reviewStatus categories tags bibleReference].to_set
+      'notes' => %w[originId originDate sourceUrl sourceType reviewStatus categories tags bibleReference].to_set,
+      'standard' => Set.new
     }.freeze
     FAMILY_SOURCE_FIELDS = {
       'book' => %w[sourceKey section].to_set,
       'bible' => %w[sourceKey book chapter verseStart verseEnd].to_set,
       'jw' => %w[sourceKey chapter section paragraphStart paragraphEnd sourcePages citation].to_set,
-      'notes' => %w[sourceKey section originId originDate].to_set
+      'notes' => %w[sourceKey section originId originDate].to_set,
+      'standard' => %w[sourceKey section].to_set
     }.freeze
     DOCUMENT_KINDS = %w[frontmatter chapter appendix article bible-chapter note index analysis page].to_set.freeze
     CHUNK_KINDS = %w[prose list table quote admonition verse-range code image-description].to_set.freeze
