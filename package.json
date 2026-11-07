@@ -4,7 +4,11 @@
   "private": true,
   "description": "Minimal Antora site",
   "scripts": {
-    "start": "antora antora-playbook.yml && http-server build/site -c-1 -o"
+    "start": "antora antora-playbook.yml && http-server build/site -c-1 -o",
+    "rag:generate": "bundle exec ruby scripts/docs-rag.rb generate",
+    "rag:validate": "bundle exec ruby scripts/docs-rag.rb validate",
+    "rag:check": "bundle exec ruby scripts/docs-rag.rb check",
+    "test:rag": "bundle exec ruby test/docs_rag_test.rb"
   },
   "engines": {
     "node": ">=20"
